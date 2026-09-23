@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jayziel — Revenue Automation Specialist focused on CRM, workflow automation, lead follow-up, and HVAC revenue systems." />
+  <title>Jayziel | Revenue Automation Specialist</title>
+
+  <style>
+    :root{
+      --navy:#012452;
+      --blue:#0059C0;
+      --orange:#FF7A00;
+      --orange-light:#FFF1E6;
+      --ink:#1F2937;
+      --muted:#5B6472;
+      --line:#E1E7F0;
+      --bg:#F5F8FC;
+      --white:#FFFFFF;
+      --max:1180px;
+      --radius:12px;
+      --shadow:0 10px 30px rgba(1,36,82,.07);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:var(--white);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,textarea{font:inherit}
+
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .section{padding:84px 0}
+    .section-alt{background:var(--bg)}
+    .section-dark{background:var(--navy);color:var(--white)}
+    .section-tag{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--orange);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+    .section-tag::after{
+      content:"";
+      width:210px;
+      height:1px;
+      background:currentColor;
+      opacity:.7;
+    }
+    h1,h2,h3{color:var(--navy);line-height:1.05;margin:0}
+    .section-dark h2,.section-dark h3{color:var(--white)}
+    h2{font-size:clamp(32px,4vw,52px);letter-spacing:-.035em}
+    h3{font-size:18px}
+    p{color:var(--muted);margin:0}
+    .eyebrow{
+      color:var(--navy);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      height:64px;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(10px);
+      border-top:1px solid var(--blue);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+    .brand{
+      font-weight:900;
+      color:var(--navy);
+      letter-spacing:.02em;
+      font-size:16px;
+    }
+    .brand-dot{color:var(--orange)}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{
+      font-size:12px;
+      font-weight:700;
+      color:var(--ink);
+    }
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{
+      background:var(--orange);
+      color:#fff !important;
+      padding:9px 14px;
+      border-radius:6px;
+    }
+
+    /* HERO */
+    .hero{background:var(--bg);padding:74px 0 0}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:54px;
+      align-items:center;
+      min-height:480px;
+    }
+    .hero h1{
+      max-width:680px;
+      font-size:clamp(42px,5.6vw,70px);
+      letter-spacing:-.055em;
+    }
+    .hero h1 .accent{color:var(--orange)}
+    .hero-copy{
+      max-width:610px;
+      margin-top:22px;
+      font-size:15px;
+    }
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:40px;
+      padding:10px 17px;
+      border-radius:5px;
+      border:1px solid var(--line);
+      font-size:12px;
+      font-weight:800;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+    .btn-light{background:#fff;color:var(--navy)}
+    .hero-note{
+      margin-top:20px;
+      font-size:10px;
+      color:#7A8492;
+    }
+    .hero-visual{position:relative;min-height:340px}
+    .flow{
+      position:relative;
+      width:min(500px,100%);
+      margin:auto;
+      padding:18px;
+    }
+    .flow-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px 14px;
+      align-items:center;
+    }
+    .flow-node{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:12px 8px;
+      min-height:72px;
+      box-shadow:0 6px 18px rgba(1,36,82,.05);
+      text-align:center;
+    }
+    .flow-node:nth-child(3n){border-color:#C9DDF5}
+    .flow-icon{
+      width:25px;height:25px;border-radius:6px;
+      background:var(--navy);color:#fff;
+      display:grid;place-items:center;
+      margin:0 auto 6px;
+      font-size:11px;font-weight:900;
+    }
+    .flow-node:nth-child(2) .flow-icon,
+    .flow-node:nth-child(4) .flow-icon{background:var(--blue)}
+    .flow-node:nth-child(3) .flow-icon,
+    .flow-node:nth-child(5) .flow-icon{background:var(--orange)}
+    .flow-node span{display:block;font-size:9px;font-weight:800;color:var(--navy);line-height:1.2}
+    .flow-label{
+      text-align:center;
+      margin-top:22px;
+      color:#718096;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* PROOF STRIP */
+    .proof-strip{background:var(--navy);color:#fff}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .proof-item{
+      padding:20px 24px;
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-right:1px solid rgba(255,255,255,.16);
+    }
+    .proof-item:last-child{border-right:0}
+    .proof-number{font-size:32px;font-weight:900;color:var(--orange);line-height:1}
+    .proof-label{font-size:12px;font-weight:900;line-height:1.1;text-transform:uppercase}
+
+    /* HOW I THINK */
+    .think-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+    .think-title{max-width:480px}
+    .think-title .accent{color:var(--orange)}
+    .think-intro{margin-top:20px;max-width:540px}
+    .logic-list{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+    .logic-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      padding:15px 18px;
+      border-bottom:1px solid var(--line);
+    }
+    .logic-row:last-child{border-bottom:0}
+    .logic-name{font-size:12px;font-weight:900;color:var(--navy)}
+    .logic-name::before{content:"";display:inline-block;width:5px;height:5px;background:var(--orange);border-radius:50%;margin-right:8px;vertical-align:middle}
+    .logic-detail{text-align:right;color:#778291;font-size:10px}
+
+    /* CASE STUDY */
+    .case-header{display:flex;justify-content:space-between;gap:30px;align-items:end}
+    .case-title{max-width:850px}
+    .case-title h2{font-size:clamp(28px,3.6vw,44px)}
+    .case-desc{max-width:700px;margin-top:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+    .chip{
+      border:1px solid #D7E3F2;
+      color:var(--blue);
+      background:#fff;
+      padding:5px 9px;
+      border-radius:30px;
+      font-size:9px;
+      font-weight:800;
+    }
+    .workflow-list{margin-top:28px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    details{border-bottom:1px solid var(--line)}
+    details:last-child{border-bottom:0}
+    summary{
+      list-style:none;
+      cursor:pointer;
+      display:grid;
+      grid-template-columns:42px 1fr 24px;
+      align-items:center;
+      gap:12px;
+      padding:16px 18px;
+      color:var(--navy);
+      font-size:12px;
+      font-weight:900;
+    }
+    summary::-webkit-details-marker{display:none}
+    .step-no{color:var(--orange);font-size:10px}
+    .plus{font-size:18px;color:#778291;text-align:center;transition:.2s}
+    details[open] .plus{transform:rotate(45deg);color:var(--orange)}
+    .workflow-body{
+      padding:0 54px 20px 72px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:25px;
+      align-items:end;
+    }
+    .workflow-body p{font-size:12px}
+    .watch{
+      white-space:nowrap;
+      color:var(--blue);
+      font-weight:900;
+      font-size:11px;
+    }
+    .watch:hover{text-decoration:underline}
+
+    .scope{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .scope-card{
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:15px;
+      background:var(--bg);
+    }
+    .scope-card strong{display:block;color:var(--navy);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .scope-card span{font-size:11px;color:var(--muted)}
+
+    /* PROCESS */
+    .process-intro{max-width:600px;margin:0 auto 38px;text-align:center}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .process-card{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:18px;
+      min-height:175px;
+      overflow:hidden;
+      transition:.2s;
+    }
+    .process-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .process-num{
+      position:absolute;
+      right:10px;
+      top:2px;
+      font-size:52px;
+      font-weight:900;
+      color:#EEF3F9;
+      line-height:1;
+    }
+    .process-label{color:var(--orange);font-size:9px;font-weight:900;letter-spacing:.1em}
+    .process-card h3{font-size:14px;margin-top:8px}
+    .process-card p{font-size:10px;margin-top:9px}
+
+    /* TOOLS */
+    .tools-intro{max-width:700px;margin-top:12px}
+    .tool-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px}
+    .tool-card{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      border-radius:9px;
+      padding:14px;
+    }
+    .tool-cat{color:var(--orange);font-size:8px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px}
+    .tool{
+      display:flex;align-items:center;gap:7px;
+      color:#fff;font-size:10px;font-weight:800;
+      padding:7px 0;
+      border-top:1px solid rgba(255,255,255,.09);
+    }
+    .tool:first-of-type{border-top:0}
+    .tool-icon{
+      width:17px;height:17px;border-radius:4px;
+      background:#fff;color:var(--navy);
+      display:grid;place-items:center;
+      font-size:8px;font-weight:900;
+      flex:none;
+    }
+    .tool-note{margin-top:28px;color:#BFCBDD;font-size:11px;max-width:700px}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+    .photo-wrap{
+      position:relative;
+      max-width:410px;
+      margin:auto;
+    }
+    .photo-wrap::before{
+      content:"";
+      position:absolute;
+      left:-12px;bottom:-12px;
+      width:65%;height:72%;
+      border:2px solid var(--orange);
+      border-radius:12px;
+      z-index:0;
+    }
+    .profile-photo{
+      position:relative;
+      z-index:1;
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      object-position:center top;
+      background:#EAF0F8;
+      border-radius:12px;
+    }
+    .about-copy h2{font-size:clamp(30px,4vw,48px)}
+    .about-copy h2 .accent{color:var(--orange)}
+    .about-copy > p{margin-top:18px}
+    .transparency{
+      margin-top:20px;
+      padding:13px 15px;
+      background:#FFF9F4;
+      border-left:3px solid var(--orange);
+      font-size:11px;
+    }
+    .hiring-card{
+      margin-top:18px;
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:17px;
+    }
+    .hiring-card strong{color:var(--navy);font-size:11px}
+    .contact-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+    .small-btn{
+      padding:8px 10px;
+      border-radius:5px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--navy);
+      font-size:10px;
+      font-weight:900;
+    }
+    .small-btn.primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .contact-title{font-size:clamp(34px,4.5vw,56px)}
+    .contact-title .accent{color:var(--orange)}
+    .contact-copy{margin-top:14px;max-width:500px}
+    .contact-table{margin-top:24px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+    .contact-row{display:grid;grid-template-columns:90px 1fr;padding:12px 14px;border-bottom:1px solid var(--line);font-size:11px}
+    .contact-row:last-child{border-bottom:0}
+    .contact-row strong{color:var(--navy)}
+    .contact-row a{color:var(--blue);font-weight:700;word-break:break-word}
+    .contact-form{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:var(--shadow)}
+    .field{margin-bottom:12px}
+    .field label{display:block;color:var(--navy);font-size:10px;font-weight:900;margin-bottom:6px}
+    .field input,.field textarea{
+      width:100%;
+      border:1px solid #DDE5EF;
+      background:#F7F9FC;
+      border-radius:5px;
+      padding:10px;
+      outline:none;
+      font-size:11px;
+      color:var(--ink);
+    }
+    .field textarea{min-height:110px;resize:vertical}
+    .field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,89,192,.08)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:#91A5C0;padding:20px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:10px}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a:hover{color:#fff}
+
+    @media (max-width:900px){
+      .hero-grid,.think-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+      .hero{padding-top:52px}
+      .hero-visual{min-height:280px}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .tool-grid{grid-template-columns:repeat(2,1fr)}
+      .scope{grid-template-columns:repeat(2,1fr)}
+      .case-header{display:block}
+      .section{padding:66px 0}
+    }
+
+    @media (max-width:640px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .nav-links a:not(.nav-cta){display:none}
+      .nav-links{gap:8px}
+      .hero h1{font-size:42px}
+      .proof-grid{grid-template-columns:1fr}
+      .proof-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}
+      .proof-item:last-child{border-bottom:0}
+      .flow-grid{gap:9px}
+      .flow-node{min-height:62px;padding:9px 5px}
+      .flow-node span{font-size:8px}
+      .logic-row{grid-template-columns:1fr;gap:3px}
+      .logic-detail{text-align:left;padding-left:13px}
+      .workflow-body{grid-template-columns:1fr;padding:0 18px 18px 72px}
+      .scope,.process-grid,.tool-grid{grid-template-columns:1fr}
+      .process-card{min-height:145px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+      .section-tag::after{width:100px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">JAYZIEL<span class="brand-dot">•</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#how-i-work">How I Work</a>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Revenue Automation Specialist · HVAC</div>
+          <h1>I build HVAC systems that turn leads into <span class="accent">booked jobs.</span></h1>
+          <p class="hero-copy">
+            CRM, pipeline, follow-up, and automation systems for HVAC businesses designed to reduce lead leakage,
+            improve response speed, and create a clearer path from inquiry to booked job.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#case-study">View my work →</a>
+            <a class="btn btn-light" href="#contact">Contact me</a>
+          </div>
+          <p class="hero-note">
+            Portfolio demos are self-directed builds created to demonstrate CRM logic, automation, lead follow-up, testing, and documentation.
+          </p>
+        </div>
+
+        <div class="hero-visual" aria-label="Lead-to-booked-job flow">
+          <div class="flow">
+            <div class="flow-grid">
+              <div class="flow-node"><div class="flow-icon">01</div><span>Missed Call<br>Captured</span></div>
+              <div class="flow-node"><div class="flow-icon">02</div><span>Lead Data<br>Enriched</span></div>
+              <div class="flow-node"><div class="flow-icon">03</div><span>Automated<br>Follow-Up</span></div>
+              <div class="flow-node"><div class="flow-icon">04</div><span>Qualified &<br>Nurtured</span></div>
+              <div class="flow-node"><div class="flow-icon">05</div><span>Book<br>Appointment</span></div>
+              <div class="flow-node"><div class="flow-icon">06</div><span>Track &<br>Optimize</span></div>
+            </div>
+            <div class="flow-label">Automate · Follow Up · Book More Jobs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section class="proof-strip">
+      <div class="container proof-grid">
+        <div class="proof-item"><span class="proof-number">5</span><span class="proof-label">Workflows<br>Built</span></div>
+        <div class="proof-item"><span class="proof-number">7</span><span class="proof-label">Pipeline<br>Stages</span></div>
+        <div class="proof-item"><span class="proof-number">1</span><span class="proof-label">Booking<br>Funnel</span></div>
+      </div>
+    </section>
+
+    <!-- HOW I THINK -->
+    <section class="section section-alt" id="how-i-think">
+      <div class="container think-grid">
+        <div>
+          <div class="section-tag">How I Think</div>
+          <h2 class="think-title">Find the leak.<br>Fix the workflow.<br><span class="accent">Improve the revenue process.</span></h2>
+          <p class="think-intro">
+            Every automation starts with the customer journey. I look for where leads slow down, get missed,
+            or drop off — then design the CRM and follow-up logic around the actual business problem.
+          </p>
+        </div>
+
+        <div class="logic-list">
+          <div class="logic-row"><div class="logic-name">Lead Capture</div><div class="logic-detail">Forms, funnels, source tracking</div></div>
+          <div class="logic-row"><div class="logic-name">Lead Response</div><div class="logic-detail">Instant follow-up, missed-call recovery</div></div>
+          <div class="logic-row"><div class="logic-name">Pipeline Logic</div><div class="logic-detail">Stages, ownership, lead status</div></div>
+          <div class="logic-row"><div class="logic-name">Appointment Flow</div><div class="logic-detail">Calendars, confirmation, reminders</div></div>
+          <div class="logic-row"><div class="logic-name">Lead Nurture</div><div class="logic-detail">Follow-up, quote recovery, reactivation</div></div>
+          <div class="logic-row"><div class="logic-name">Testing & QA</div><div class="logic-detail">Timing, edge cases, duplicate prevention, documentation</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section class="section" id="case-study">
+      <div class="container">
+        <div class="section-tag">Self-Directed Build · HVAC</div>
+
+        <div class="case-header">
+          <div class="case-title">
+            <h2>Apex Comfort HVAC — Lead-to-Booked-Job Revenue Automation Demo</h2>
+            <p class="case-desc">
+              A self-directed HVAC portfolio system showing how I map lead leakage, build CRM and automation logic,
+              connect follow-up workflows, test edge cases, and document the system from inquiry to booking.
+            </p>
+            <div class="chips">
+              <span class="chip">CRM & Pipeline</span>
+              <span class="chip">5 Workflows</span>
+              <span class="chip">Lead Capture</span>
+              <span class="chip">Booking Flow</span>
+              <span class="chip">Follow-Up</span>
+              <span class="chip">Testing & Documentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-list">
+          <details>
+            <summary><span class="step-no">01</span><span>Missed Call Recovery</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Recover missed opportunities with an immediate customer response, internal notification, and follow-up task.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1S7tR9nWbCNLAEFs7RCHA6IgOqwTDCVWP/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">02</span><span>Lead Response</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Show how a new inquiry enters the CRM, triggers immediate follow-up, and moves into the appropriate pipeline logic.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1rtUrFyayss-Lc6JtuykiUBjm3VrJcp9d/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">03</span><span>Estimate Follow-Up</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Use structured follow-up to keep estimate opportunities moving without relying entirely on manual reminders.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1vFKiQkl6hw24JQB5sk-KbYCXdlYcpoRG/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">04</span><span>Appointment No-Show Recovery</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Recover missed appointments with appropriate follow-up and a clear path back to scheduling.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1dITA2s82WyABoG9JZrxZCFaIj0bs9cJb/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">05</span><span>Facebook / Messenger Lead Nurture</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Move social leads into the CRM and maintain timely follow-up when the prospect does not book immediately.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/17070EpXjpi3sEpMhKdPMDn_u8F0ZAr5u/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+        </div>
+
+        <div class="scope">
+          <div class="scope-card"><strong>CRM</strong><span>Contact fields, pipeline stages, lead status</span></div>
+          <div class="scope-card"><strong>Automation</strong><span>Triggers, actions, conditions, follow-up</span></div>
+          <div class="scope-card"><strong>Scheduling</strong><span>Calendar, confirmations, reminders</span></div>
+          <div class="scope-card"><strong>Lead Capture</strong><span>HVAC consultation funnel and forms</span></div>
+          <div class="scope-card"><strong>QA</strong><span>Testing, edge cases, duplicate prevention</span></div>
+          <div class="scope-card"><strong>Documentation</strong><span>Workflow logic and maintainability</span></div>
+        </div>
+
+        <div style="margin-top:14px;font-size:11px;color:var(--muted)">
+          Additional walkthrough:
+          <a style="color:var(--blue);font-weight:800" target="_blank" rel="noopener noreferrer"
+             href="https://drive.google.com/file/d/191z_03vBy6Mf4ZVx6YWHwsG5SjJleyXB/view?usp=sharing">
+             Service Scheduling Flow →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="section section-alt" id="how-i-work">
+      <div class="container">
+        <div class="section-tag">How I Work</div>
+        <div class="process-intro">
+          <p>
+            From revenue leak to a tested, documented working system. I start with the business problem,
+            then design a practical system that can be tested, maintained, explained, and handed off.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <span class="process-num">01</span>
+            <span class="process-label">DISCOVER</span>
+            <h3>Map the customer journey</h3>
+            <p>Identify where leads enter, where they drop off, and where manual follow-up creates gaps.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-num">02</span>
+            <span class="process-label">DESIGN & BUILD</span>
+            <h3>Turn the solution into a system</h3>
+            <p>Structure the CRM, pipeline logic, triggers, conditions, and follow-up around the workflow.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-num">03</span>
+            <span class="process-label">TEST & REFINE</span>
+            <h3>Test real-world scenarios</h3>
+            <p>Check timing, conditions, edge cases, duplicate actions, and handoffs before launch.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-num">04</span>
+            <span class="process-label">DOCUMENT & HAND OFF</span>
+            <h3>Make it clear and maintainable</h3>
+            <p>Document the logic, workflows, and key settings so the system can be understood and managed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section section-dark" id="tools">
+      <div class="container">
+        <div class="section-tag">Tools</div>
+        <h2>The tools behind the system.</h2>
+        <p class="tools-intro">
+          A practical no-code and AI-assisted stack for CRM architecture, workflow automation,
+          customer journeys, documentation, and portfolio assets.
+        </p>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="tool-cat">CRM & Automation</div>
+            <div class="tool"><span class="tool-icon">GH</span>GoHighLevel</div>
+            <div class="tool"><span class="tool-icon">M</span>Make.com</div>
+            <div class="tool"><span class="tool-icon">n8</span>n8n</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-cat">AI & Problem Solving</div>
+            <div class="tool"><span class="tool-icon">AI</span>ChatGPT</div>
+            <div class="tool"><span class="tool-icon">C</span>Claude</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-cat">Design & Creative</div>
+            <div class="tool"><span class="tool-icon">Ca</span>Canva</div>
+            <div class="tool"><span class="tool-icon">Ps</span>Photoshop</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-cat">Productivity</div>
+            <div class="tool"><span class="tool-icon">G</span>Google Workspace</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-cat">Video</div>
+            <div class="tool"><span class="tool-icon">▶</span>CapCut</div>
+          </div>
+        </div>
+
+        <p class="tool-note">
+          Tools are selected based on the workflow — not the other way around. The focus is on simple,
+          reliable systems that solve a specific business problem without unnecessary automation.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="photo-wrap">
+          <!-- Replace with your actual GitHub asset path -->
+          <img class="profile-photo" src="assets/profile.jpg" alt="Jayziel, Revenue Automation Specialist" />
+        </div>
+
+        <div class="about-copy">
+          <div class="section-tag">About</div>
+          <h2>The person behind the <span class="accent">systems.</span></h2>
+          <p>
+            I'm <strong>Jayziel</strong>, based in the Philippines, with a background in graphic design
+            and a growing focus on CRM and revenue automation.
+          </p>
+          <p>
+            That design background gives me a strong eye for the customer-facing experience, while my current
+            work focuses on the systems behind it — CRM structure, workflow automation, lead management,
+            funnels, follow-up, testing, and documentation.
+          </p>
+          <p>
+            I'm building toward a <strong>Revenue Automation Specialist</strong> role, with HVAC as my primary
+            portfolio niche. My main project, Apex Comfort HVAC, is a self-directed demo system built from scratch
+            to show how I approach real business problems, design automation logic, test workflows, and document the finished system.
+          </p>
+
+          <div class="transparency">
+            These are self-directed portfolio demonstrations, not claimed client results. The goal is to show
+            how I think, build, troubleshoot, test, and improve systems.
+          </div>
+
+          <div class="hiring-card">
+            <strong>Open to Revenue Automation, CRM Automation, and GoHighLevel Specialist opportunities.</strong>
+            <div class="contact-links">
+              <a class="small-btn primary" href="#contact">Email me →</a>
+              <a class="small-btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">LinkedIn</a>
+              <!-- Replace with your actual WhatsApp click-to-chat URL -->
+              <a class="small-btn" href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-tag">Contact</div>
+          <h2 class="contact-title">Start a <span class="accent">conversation.</span></h2>
+          <p class="contact-copy">
+            Describe your workflow, the problem you're hitting, or the system you want to build.
+            I'm happy to walk through the approach and the work shown in this portfolio.
+          </p>
+
+          <div class="contact-table">
+            <!-- Replace YOUR_EMAIL with your actual email -->
+            <div class="contact-row"><strong>Email</strong><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></div>
+            <div class="contact-row"><strong>LinkedIn</strong><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">linkedin.com/in/jayziel-lagumbay</a></div>
+            <div class="contact-row"><strong>WhatsApp</strong><a target="_blank" rel="noopener noreferrer" href="https://wa.me/YOUR_WHATSAPP_NUMBER">Message on WhatsApp</a></div>
+            <div class="contact-row"><strong>Location</strong><span>Philippines · Remote</span></div>
+          </div>
+        </div>
+
+        <!-- GitHub Pages cannot process a normal HTML form by itself.
+             This form opens the visitor's email client. Replace YOUR_EMAIL. -->
+        <form class="contact-form" id="contactForm">
+          <div class="field">
+            <label for="name">NAME</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">EMAIL</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="message">MESSAGE</label>
+            <textarea id="message" name="message" placeholder="Tell me about your HVAC business and what you're trying to solve." required></textarea>
+          </div>
+          <button class="btn btn-orange" type="submit">Send message →</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Jayziel · Revenue Automation Specialist</span>
+      <div class="footer-links">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">LinkedIn</a>
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#contact">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // GitHub Pages is static, so this form opens the visitor's email client.
+    // Replace YOUR_EMAIL@example.com with your real email address.
+    const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
+
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = encodeURIComponent("Portfolio inquiry from " + name);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        message
+      );
+
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
