@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jayziel — Revenue Automation Specialist focused on CRM, workflow automation, lead follow-up, and HVAC revenue systems." />
+  <title>Jayziel | Revenue Automation Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --font-sans:'DM Sans',Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      --navy:#012452;
+      --blue:#0059C0;
+      --orange:#FF7A00;
+      --orange-light:#FFF1E6;
+      --ink:#1F2937;
+      --muted:#5B6472;
+      --line:#E1E7F0;
+      --bg:#F5F8FC;
+      --white:#FFFFFF;
+      --max:1180px;
+      --radius:12px;
+      --shadow:0 10px 30px rgba(1,36,82,.07);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      color:var(--ink);
+      background:var(--white);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,textarea{font:inherit}
+
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .section{padding:84px 0}
+    .section-alt{background:var(--bg)}
+    .section-dark{background:var(--navy);color:var(--white)}
+    .section-tag{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--orange);
+      font-family:var(--font-mono);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+    .tag-line{
+      position:relative;
+      width:210px;
+      height:1px;
+      background:currentColor;
+      opacity:.55;
+      flex:none;
+    }
+    .tag-line::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:0;
+      width:6px;
+      height:6px;
+      margin-top:-3px;
+      margin-left:-3px;
+      border-radius:50%;
+      background:var(--orange);
+      box-shadow:0 0 4px rgba(255,122,0,.95), 0 0 9px rgba(255,122,0,.6);
+      animation:tagDotTravel 3.2s linear infinite;
+    }
+    @keyframes tagDotTravel{
+      0%{left:0%}
+      100%{left:100%}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .tag-line::after{animation:none;opacity:0}
+    }
+    h1,h2,h3{color:var(--navy);line-height:1.05;margin:0}
+    .section-dark h2,.section-dark h3{color:var(--white)}
+    h2{font-size:clamp(32px,4vw,52px);letter-spacing:-.035em}
+    h3{font-size:18px}
+    p{color:var(--muted);margin:0}
+    .eyebrow{
+      color:var(--navy);
+      font-family:var(--font-mono);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+      transition-delay:var(--d, 0ms);
+    }
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      height:64px;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(10px);
+      border-top:1px solid var(--blue);
+      border-bottom:1px solid var(--line);
+      transition:box-shadow .3s ease;
+    }
+    .nav.scrolled{box-shadow:0 6px 18px rgba(1,36,82,.08)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+    .brand{
+      font-weight:900;
+      color:var(--navy);
+      letter-spacing:.02em;
+      font-size:16px;
+    }
+    .brand-dot{color:var(--orange);display:inline-block;animation:pulseDot 2.4s ease-in-out infinite}
+    @keyframes pulseDot{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.45;transform:scale(1.3)}
+    }
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{
+      font-size:12px;
+      font-weight:700;
+      color:var(--ink);
+      position:relative;
+    }
+    .nav-links a:not(.nav-cta)::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:-4px;
+      width:0;height:2px;
+      background:var(--orange);
+      transition:width .25s ease;
+    }
+    .nav-links a:not(.nav-cta):hover::after{width:100%}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{
+      background:var(--orange);
+      color:#fff !important;
+      padding:9px 14px;
+      border-radius:6px;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(255,122,0,.35)}
+
+    /* HERO */
+    .hero{background:var(--bg);padding:74px 0 0}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:54px;
+      align-items:center;
+      min-height:480px;
+    }
+    .hero h1{
+      max-width:680px;
+      font-size:clamp(42px,5.6vw,70px);
+      letter-spacing:-.055em;
+    }
+    .hero h1 .accent{color:var(--orange)}
+    .hero-copy{
+      max-width:610px;
+      margin-top:22px;
+      font-size:15px;
+    }
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:40px;
+      padding:10px 17px;
+      border-radius:5px;
+      border:1px solid var(--line);
+      font-size:12px;
+      font-weight:800;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .btn-primary:hover{background:var(--orange);border-color:var(--orange)}
+    .btn-orange{background:var(--orange);color:#fff;border-color:var(--orange)}
+    .btn-orange:hover{background:var(--blue);border-color:var(--blue)}
+    .btn-light{background:#fff;color:var(--navy)}
+    .btn-light:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .hero-note{
+      margin-top:20px;
+      font-size:10px;
+      color:#7A8492;
+    }
+    .hero-visual{position:relative;min-height:340px}
+    .flow{
+      position:relative;
+      width:min(500px,100%);
+      margin:auto;
+      padding:18px;
+    }
+    .flow-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px 14px;
+      align-items:center;
+      position:relative;
+    }
+    .flow-node{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:12px 8px;
+      min-height:72px;
+      box-shadow:0 6px 18px rgba(1,36,82,.05);
+      text-align:center;
+      opacity:0;
+      transform:translateY(14px) scale(.94);
+      animation:nodeIn .55s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    .flow-node:nth-child(1){animation-delay:.05s}
+    .flow-node:nth-child(2){animation-delay:.2s}
+    .flow-node:nth-child(3){animation-delay:.35s}
+    .flow-node:nth-child(4){animation-delay:.5s}
+    .flow-node:nth-child(5){animation-delay:.65s}
+    .flow-node:nth-child(6){animation-delay:.8s}
+    @keyframes nodeIn{to{opacity:1;transform:translateY(0) scale(1)}}
+    .flow-node:hover{transform:translateY(-3px);transition:transform .2s ease;box-shadow:0 10px 22px rgba(1,36,82,.12)}
+    .flow-node:nth-child(3n){border-color:#C9DDF5}
+    .flow-icon{
+      width:25px;height:25px;border-radius:6px;
+      background:var(--navy);color:#fff;
+      display:grid;place-items:center;
+      margin:0 auto 6px;
+      font-size:11px;font-weight:900;
+      position:relative;
+    }
+    .flow-node:nth-child(2) .flow-icon,
+    .flow-node:nth-child(4) .flow-icon{background:var(--blue)}
+    .flow-node:nth-child(3) .flow-icon,
+    .flow-node:nth-child(5) .flow-icon{background:var(--orange)}
+    .flow-icon::after{
+      content:"";
+      position:absolute;
+      inset:-4px;
+      border-radius:8px;
+      border:2px solid var(--orange);
+      opacity:0;
+      animation:ringSeq 7.2s ease-out infinite;
+    }
+    .flow-node:nth-child(1) .flow-icon::after{animation-delay:0s}
+    .flow-node:nth-child(2) .flow-icon::after{animation-delay:1.2s}
+    .flow-node:nth-child(3) .flow-icon::after{animation-delay:2.4s}
+    .flow-node:nth-child(4) .flow-icon::after{animation-delay:3.6s}
+    .flow-node:nth-child(5) .flow-icon::after{animation-delay:4.8s}
+    .flow-node:nth-child(6) .flow-icon::after{animation-delay:6s}
+    @keyframes ringSeq{
+      0%,4%,100%{transform:scale(.85);opacity:0}
+      7%{transform:scale(.95);opacity:.9}
+      16%{transform:scale(1.55);opacity:0}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .flow-icon::after{animation:none}
+    }
+    .flow-node span{display:block;font-size:9px;font-weight:800;color:var(--navy);line-height:1.2}
+    .flow-label{
+      text-align:center;
+      margin-top:22px;
+      color:#718096;
+      font-family:var(--font-mono);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* PROOF STRIP */
+    .proof-strip{background:var(--navy);color:#fff}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .proof-item{
+      padding:20px 24px;
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-right:1px solid rgba(255,255,255,.16);
+    }
+    .proof-item:last-child{border-right:0}
+    .proof-number{font-size:32px;font-weight:900;color:var(--orange);line-height:1}
+    .proof-label{font-family:var(--font-mono);font-size:12px;font-weight:800;line-height:1.1;text-transform:uppercase}
+
+    /* HOW I THINK */
+    .think-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+    .think-title{max-width:480px}
+    .think-title .accent{color:var(--orange)}
+    .think-intro{margin-top:20px;max-width:540px}
+    .logic-list{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+    .logic-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      padding:15px 18px;
+      border-bottom:1px solid var(--line);
+      transition:background .2s ease;
+    }
+    .logic-row:hover{background:var(--orange-light)}
+    .logic-row:last-child{border-bottom:0}
+    .logic-name{font-size:12px;font-weight:900;color:var(--navy)}
+    .logic-name::before{content:"";display:inline-block;width:5px;height:5px;background:var(--orange);border-radius:50%;margin-right:8px;vertical-align:middle}
+    .logic-detail{text-align:right;color:#778291;font-size:10px}
+
+    /* CASE STUDY */
+    .case-header{display:flex;justify-content:space-between;gap:30px;align-items:end}
+    .case-title{max-width:850px}
+    .case-title h2{font-size:clamp(28px,3.6vw,44px)}
+    .case-desc{max-width:700px;margin-top:14px}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+    .chip{
+      border:1px solid #D7E3F2;
+      color:var(--blue);
+      background:#fff;
+      padding:5px 9px;
+      border-radius:30px;
+      font-family:var(--font-mono);
+      font-size:9px;
+      font-weight:700;
+      transition:background .2s ease, color .2s ease;
+      animation:chipGlow 7.2s ease-in-out infinite;
+    }
+    .chip:nth-child(1){animation-delay:0s}
+    .chip:nth-child(2){animation-delay:1.2s}
+    .chip:nth-child(3){animation-delay:2.4s}
+    .chip:nth-child(4){animation-delay:3.6s}
+    .chip:nth-child(5){animation-delay:4.8s}
+    .chip:nth-child(6){animation-delay:6s}
+    @keyframes chipGlow{
+      0%,100%{
+        background:#fff;
+        color:var(--blue);
+        border-color:#D7E3F2;
+        box-shadow:none;
+        transform:scale(1);
+      }
+      8%{
+        background:var(--blue);
+        color:#fff;
+        border-color:var(--blue);
+        box-shadow:0 0 16px 3px rgba(0,89,192,.5);
+        transform:scale(1.07);
+      }
+      16%{
+        background:#fff;
+        color:var(--blue);
+        border-color:#D7E3F2;
+        box-shadow:none;
+        transform:scale(1);
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip{animation:none}
+    }
+    .chip:hover{background:var(--blue);color:#fff}
+    .workflow-list{margin-top:28px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+    details{border-bottom:1px solid var(--line)}
+    details:last-child{border-bottom:0}
+    summary{
+      list-style:none;
+      cursor:pointer;
+      display:grid;
+      grid-template-columns:42px 1fr 24px;
+      align-items:center;
+      gap:12px;
+      padding:16px 18px;
+      color:var(--navy);
+      font-size:12px;
+      font-weight:900;
+      transition:background .2s ease;
+    }
+    summary:hover{background:var(--bg)}
+    summary::-webkit-details-marker{display:none}
+    .step-no{color:var(--orange);font-size:10px;font-family:var(--font-mono);font-weight:700}
+    .plus{font-size:18px;color:#778291;text-align:center;transition:transform .25s ease,color .25s ease}
+    details[open] .plus{transform:rotate(45deg);color:var(--orange)}
+    .workflow-body{
+      padding:0 54px 20px 72px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:25px;
+      align-items:end;
+      animation:dropIn .3s ease;
+    }
+    @keyframes dropIn{
+      from{opacity:0;transform:translateY(-6px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .workflow-body p{font-size:12px}
+    .watch{
+      white-space:nowrap;
+      color:var(--blue);
+      font-weight:900;
+      font-size:11px;
+    }
+    .watch:hover{text-decoration:underline}
+
+    .scope{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .scope-card{
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:15px;
+      background:var(--bg);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .scope-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .scope-card strong{display:block;color:var(--navy);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .scope-card span{font-size:11px;color:var(--muted)}
+
+    /* GHL GALLERY */
+    .gallery-intro{max-width:680px;margin-top:12px}
+    .gallery-grid{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+    .gallery-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .gallery-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(1,36,82,.12)}
+    .gallery-shot{
+      width:100%;
+      aspect-ratio:16/10;
+      background:linear-gradient(135deg,#EEF3FB,#E3ECF8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#9FB0C6;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      text-align:center;
+      padding:10px;
+      overflow:hidden;
+    }
+    .gallery-shot img{width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;border-radius:4px}
+    .gallery-shot{position:relative}
+    .zoom-btn{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:30px;height:30px;
+      border-radius:50%;
+      border:none;
+      background:rgba(1,36,82,.75);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:14px;
+      z-index:2;
+      transition:background .2s ease, transform .2s ease;
+    }
+    .zoom-btn:hover{background:var(--orange);transform:scale(1.08)}
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(1,20,45,.92);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+      z-index:300;
+    }
+    .lightbox.show{display:flex}
+    .lightbox img{
+      max-width:92vw;
+      max-height:88vh;
+      border-radius:8px;
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      background:#fff;
+    }
+    .lightbox-close{
+      position:absolute;
+      top:20px;right:24px;
+      width:38px;height:38px;
+      border-radius:50%;
+      border:none;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .2s ease;
+    }
+    .lightbox-close:hover{background:var(--orange)}
+    .gallery-body{padding:14px 16px}
+    .gallery-body strong{display:block;color:var(--navy);font-size:12px;margin-bottom:4px}
+    .gallery-body span{font-size:11px;color:var(--muted)}
+    .gallery-note{margin-top:18px;font-size:11px;color:var(--muted);max-width:700px}
+
+    /* PROCESS */
+    .process-intro{max-width:600px;margin:0 auto 38px;text-align:center}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
+    .process-card{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:18px;
+      min-height:175px;
+      overflow:visible;
+      transition:box-shadow .2s ease;
+      animation:cardPulse 9s ease-in-out infinite;
+    }
+    .process-card:hover{box-shadow:var(--shadow)}
+    .process-card:nth-child(1){animation-delay:0s}
+    .process-card:nth-child(2){animation-delay:2.25s}
+    .process-card:nth-child(3){animation-delay:4.5s}
+    .process-card:nth-child(4){animation-delay:6.75s}
+    @keyframes cardPulse{
+      0%,4%,100%{
+        transform:scale(1);
+        background:#fff;
+        border-color:var(--line);
+        box-shadow:none;
+        z-index:1;
+      }
+      9%,15%{
+        transform:scale(1.09);
+        background:var(--navy);
+        border-color:var(--navy);
+        box-shadow:0 16px 32px rgba(1,36,82,.28);
+        z-index:3;
+      }
+      21%{
+        transform:scale(1);
+        background:#fff;
+        border-color:var(--line);
+        box-shadow:none;
+        z-index:1;
+      }
+    }
+    .process-card:not(:last-child)::after{
+      content:"→";
+      position:absolute;
+      right:-26px;
+      top:50%;
+      transform:translateY(-50%) translateX(-8px);
+      font-size:20px;
+      font-weight:900;
+      color:var(--orange);
+      opacity:0;
+      z-index:5;
+      animation:arrowPulse 9s ease-in-out infinite;
+    }
+    .process-card:nth-child(1)::after{animation-delay:0s}
+    .process-card:nth-child(2)::after{animation-delay:2.25s}
+    .process-card:nth-child(3)::after{animation-delay:4.5s}
+    @keyframes arrowPulse{
+      0%,7%,100%{opacity:0;transform:translateY(-50%) translateX(-8px)}
+      10%,14%{opacity:1;transform:translateY(-50%) translateX(4px)}
+      19%{opacity:0;transform:translateY(-50%) translateX(12px)}
+    }
+    .process-num{
+      position:absolute;
+      right:10px;
+      top:2px;
+      font-size:52px;
+      font-weight:900;
+      color:#EEF3F9;
+      line-height:1;
+      animation:cardNumPulse 9s ease-in-out infinite;
+    }
+    .process-card:nth-child(1) .process-num{animation-delay:0s}
+    .process-card:nth-child(2) .process-num{animation-delay:2.25s}
+    .process-card:nth-child(3) .process-num{animation-delay:4.5s}
+    .process-card:nth-child(4) .process-num{animation-delay:6.75s}
+    @keyframes cardNumPulse{
+      0%,4%,100%{color:#EEF3F9}
+      9%,15%{color:rgba(255,255,255,.14)}
+      21%{color:#EEF3F9}
+    }
+    .process-label{color:var(--orange);font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:.1em}
+    .process-card h3{font-size:14px;margin-top:8px;animation:cardTitlePulse 9s ease-in-out infinite}
+    .process-card p{font-size:10px;margin-top:9px;animation:cardTextPulse 9s ease-in-out infinite}
+    .process-card:nth-child(1) h3,.process-card:nth-child(1) p{animation-delay:0s}
+    .process-card:nth-child(2) h3,.process-card:nth-child(2) p{animation-delay:2.25s}
+    .process-card:nth-child(3) h3,.process-card:nth-child(3) p{animation-delay:4.5s}
+    .process-card:nth-child(4) h3,.process-card:nth-child(4) p{animation-delay:6.75s}
+    @keyframes cardTitlePulse{
+      0%,4%,100%{color:var(--navy)}
+      9%,15%{color:#fff}
+      21%{color:var(--navy)}
+    }
+    @keyframes cardTextPulse{
+      0%,4%,100%{color:var(--muted)}
+      9%,15%{color:rgba(255,255,255,.85)}
+      21%{color:var(--muted)}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .process-card,.process-card::after,.process-num,.process-card h3,.process-card p{animation:none}
+    }
+
+    /* TOOLS */
+    .tools-intro{max-width:700px;margin-top:12px}
+    .tool-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px}
+    .tool-card{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      border-radius:9px;
+      padding:14px;
+      transition:background .2s ease, transform .2s ease;
+    }
+    .tool-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+    .tool-cat{color:var(--orange);font-family:var(--font-mono);font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px}
+    .tool{
+      display:flex;align-items:center;gap:7px;
+      color:#fff;font-size:10px;font-weight:800;
+      padding:7px 0;
+      border-top:1px solid rgba(255,255,255,.09);
+    }
+    .tool:first-of-type{border-top:0}
+    .tool-icon{
+      width:20px;height:20px;border-radius:5px;
+      background:#fff;color:var(--navy);
+      display:grid;place-items:center;
+      font-size:8px;font-weight:900;
+      flex:none;
+      overflow:hidden;
+    }
+    .tool-icon img{
+      width:100%;height:100%;
+      object-fit:contain;
+      padding:2px;
+    }
+    .tool-note{margin-top:28px;color:#BFCBDD;font-size:11px;max-width:700px}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+    .photo-wrap{
+      position:relative;
+      max-width:410px;
+      margin:auto;
+    }
+    .photo-wrap::before{
+      content:"";
+      position:absolute;
+      left:-12px;bottom:-12px;
+      width:65%;height:72%;
+      border:2px solid var(--orange);
+      border-radius:12px;
+      z-index:0;
+    }
+    .node-path{
+      position:absolute;
+      left:-12px;bottom:-12px;
+      width:65%;height:72%;
+      z-index:0;
+      overflow:visible;
+      pointer-events:none;
+    }
+    .node-dot{
+      filter:drop-shadow(0 0 3px rgba(255,122,0,.95)) drop-shadow(0 0 8px rgba(255,122,0,.6));
+    }
+    @media (prefers-reduced-motion: reduce){
+      .node-path{display:none}
+    }
+    .profile-photo{
+      position:relative;
+      z-index:1;
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      object-position:center top;
+      background:#EAF0F8;
+      border-radius:12px;
+    }
+    .about-copy h2{font-size:clamp(30px,4vw,48px)}
+    .about-copy h2 .accent{color:var(--orange)}
+    .about-copy > p{margin-top:18px}
+    .transparency{
+      margin-top:20px;
+      padding:13px 15px;
+      background:#FFF9F4;
+      border-left:3px solid var(--orange);
+      font-size:11px;
+    }
+    .hiring-card{
+      margin-top:18px;
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:17px;
+    }
+    .hiring-card strong{color:var(--navy);font-size:11px}
+    .contact-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+    .small-btn{
+      padding:8px 10px;
+      border-radius:5px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--navy);
+      font-size:10px;
+      font-weight:900;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .small-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .small-btn.primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+    .small-btn.primary:hover{background:var(--blue);border-color:var(--blue)}
+    .small-btn:not(.primary):hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .contact-title{font-size:clamp(34px,4.5vw,56px)}
+    .contact-title .accent{color:var(--orange)}
+    .contact-copy{margin-top:14px;max-width:500px}
+    .contact-table{margin-top:24px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+    .contact-row{display:grid;grid-template-columns:90px 1fr;padding:12px 14px;border-bottom:1px solid var(--line);font-size:11px}
+    .contact-row:last-child{border-bottom:0}
+    .contact-row strong{color:var(--navy)}
+    .contact-row a{color:var(--blue);font-weight:700;word-break:break-word}
+    .contact-form{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:var(--shadow)}
+    .field{margin-bottom:12px}
+    .field label{display:block;color:var(--navy);font-size:10px;font-weight:900;margin-bottom:6px}
+    .field input,.field textarea{
+      width:100%;
+      border:1px solid #DDE5EF;
+      background:#F7F9FC;
+      border-radius:5px;
+      padding:10px;
+      outline:none;
+      font-size:11px;
+      color:var(--ink);
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    .field textarea{min-height:110px;resize:vertical}
+    .field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,89,192,.08)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:#91A5C0;padding:20px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:10px}
+    .footer-links{display:flex;gap:18px}
+    .footer-links a:hover{color:#fff}
+
+    /* BACK TO TOP */
+    .to-top{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:42px;height:42px;
+      border-radius:50%;
+      background:var(--navy);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      font-weight:900;
+      box-shadow:0 8px 20px rgba(1,36,82,.25);
+      opacity:0;
+      transform:translateY(12px);
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease, background .2s ease;
+      z-index:90;
+    }
+    .to-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .to-top:hover{background:var(--orange)}
+
+    @media (max-width:900px){
+      .hero-grid,.think-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+      .hero{padding-top:52px}
+      .hero-visual{min-height:280px}
+      .process-grid{grid-template-columns:repeat(2,1fr);gap:16px 28px}
+      .process-card:not(:last-child)::after{display:none}
+      .tool-grid{grid-template-columns:repeat(2,1fr)}
+      .scope{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:1fr}
+      .case-header{display:block}
+      .section{padding:66px 0}
+    }
+
+    @media (max-width:640px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .nav-links a:not(.nav-cta){display:none}
+      .nav-links{gap:8px}
+      .hero h1{font-size:42px}
+      .proof-grid{grid-template-columns:1fr}
+      .proof-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}
+      .proof-item:last-child{border-bottom:0}
+      .flow-grid{gap:9px}
+      .flow-node{min-height:62px;padding:9px 5px}
+      .flow-node span{font-size:8px}
+      .logic-row{grid-template-columns:1fr;gap:3px}
+      .logic-detail{text-align:left;padding-left:13px}
+      .workflow-body{grid-template-columns:1fr;padding:0 18px 18px 72px}
+      .scope,.process-grid,.tool-grid{grid-template-columns:1fr}
+      .process-card{min-height:145px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+      .tag-line{width:100px}
+      .to-top{right:14px;bottom:14px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">JAYZIEL<span class="brand-dot">•</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#how-i-work">How I Work</a>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Revenue Automation Specialist · HVAC</div>
+          <h1>I build HVAC systems that turn leads into <span class="accent">booked jobs.</span></h1>
+          <p class="hero-copy">
+            CRM, pipeline, follow-up, and automation systems for HVAC businesses designed to reduce lead leakage,
+            improve response speed, and create a clearer path from inquiry to booked job.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#case-study">View my work →</a>
+            <a class="btn btn-light" href="#contact">Contact me</a>
+          </div>
+          <p class="hero-note">
+            Portfolio demos are self-directed builds created to demonstrate CRM logic, automation, lead follow-up, testing, and documentation.
+          </p>
+        </div>
+
+        <div class="hero-visual reveal" style="--d:120ms" aria-label="Lead-to-booked-job flow">
+          <div class="flow">
+            <div class="flow-grid">
+              <div class="flow-node"><div class="flow-icon">01</div><span>Missed Call<br>Captured</span></div>
+              <div class="flow-node"><div class="flow-icon">02</div><span>Lead Data<br>Enriched</span></div>
+              <div class="flow-node"><div class="flow-icon">03</div><span>Automated<br>Follow-Up</span></div>
+              <div class="flow-node"><div class="flow-icon">04</div><span>Qualified &<br>Nurtured</span></div>
+              <div class="flow-node"><div class="flow-icon">05</div><span>Book<br>Appointment</span></div>
+              <div class="flow-node"><div class="flow-icon">06</div><span>Track &<br>Optimize</span></div>
+            </div>
+            <div class="flow-label">Automate · Follow Up · Book More Jobs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section class="proof-strip">
+      <div class="container proof-grid">
+        <div class="proof-item reveal"><span class="proof-number" data-count="5">0</span><span class="proof-label">Workflows<br>Built</span></div>
+        <div class="proof-item reveal" style="--d:100ms"><span class="proof-number" data-count="7">0</span><span class="proof-label">Pipeline<br>Stages</span></div>
+        <div class="proof-item reveal" style="--d:200ms"><span class="proof-number" data-count="1">0</span><span class="proof-label">Booking<br>Funnel</span></div>
+      </div>
+    </section>
+
+    <!-- HOW I THINK -->
+    <section class="section section-alt" id="how-i-think">
+      <div class="container think-grid">
+        <div class="reveal">
+          <div class="section-tag">How I Think<span class="tag-line"></span></div>
+          <h2 class="think-title">Find the leak.<br>Fix the workflow.<br><span class="accent">Improve the revenue process.</span></h2>
+          <p class="think-intro">
+            Every automation starts with the customer journey. I look for where leads slow down, get missed,
+            or drop off — then design the CRM and follow-up logic around the actual business problem.
+          </p>
+        </div>
+
+        <div class="logic-list reveal" style="--d:120ms">
+          <div class="logic-row"><div class="logic-name">Lead Capture</div><div class="logic-detail">Forms, funnels, source tracking</div></div>
+          <div class="logic-row"><div class="logic-name">Lead Response</div><div class="logic-detail">Instant follow-up, missed-call recovery</div></div>
+          <div class="logic-row"><div class="logic-name">Pipeline Logic</div><div class="logic-detail">Stages, ownership, lead status</div></div>
+          <div class="logic-row"><div class="logic-name">Appointment Flow</div><div class="logic-detail">Calendars, confirmation, reminders</div></div>
+          <div class="logic-row"><div class="logic-name">Lead Nurture</div><div class="logic-detail">Follow-up, quote recovery, reactivation</div></div>
+          <div class="logic-row"><div class="logic-name">Testing & QA</div><div class="logic-detail">Timing, edge cases, duplicate prevention, documentation</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section class="section" id="case-study">
+      <div class="container">
+        <div class="section-tag reveal">Self-Directed Build · HVAC<span class="tag-line"></span></div>
+
+        <div class="case-header reveal">
+          <div class="case-title">
+            <h2>Apex Comfort HVAC — Lead-to-Booked-Job Revenue Automation Demo</h2>
+            <p class="case-desc">
+              A self-directed HVAC portfolio system showing how I map lead leakage, build CRM and automation logic,
+              connect follow-up workflows, test edge cases, and document the system from inquiry to booking.
+            </p>
+            <div class="chips">
+              <span class="chip">CRM & Pipeline</span>
+              <span class="chip">5 Workflows</span>
+              <span class="chip">Lead Capture</span>
+              <span class="chip">Booking Flow</span>
+              <span class="chip">Follow-Up</span>
+              <span class="chip">Testing & Documentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-list reveal" style="--d:100ms">
+          <details>
+            <summary><span class="step-no">01</span><span>Missed Call Recovery</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Recover missed opportunities with an immediate customer response, internal notification, and follow-up task.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1S7tR9nWbCNLAEFs7RCHA6IgOqwTDCVWP/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">02</span><span>Lead Response</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Show how a new inquiry enters the CRM, triggers immediate follow-up, and moves into the appropriate pipeline logic.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1rtUrFyayss-Lc6JtuykiUBjm3VrJcp9d/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">03</span><span>Estimate Follow-Up</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Use structured follow-up to keep estimate opportunities moving without relying entirely on manual reminders.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1vFKiQkl6hw24JQB5sk-KbYCXdlYcpoRG/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">04</span><span>Appointment No-Show Recovery</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Recover missed appointments with appropriate follow-up and a clear path back to scheduling.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1dITA2s82WyABoG9JZrxZCFaIj0bs9cJb/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="step-no">05</span><span>Facebook / Messenger Lead Nurture</span><span class="plus">+</span></summary>
+            <div class="workflow-body">
+              <p>Move social leads into the CRM and maintain timely follow-up when the prospect does not book immediately.</p>
+              <a class="watch" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/17070EpXjpi3sEpMhKdPMDn_u8F0ZAr5u/view?usp=sharing">Watch walkthrough →</a>
+            </div>
+          </details>
+        </div>
+
+        <div class="scope reveal" style="--d:150ms">
+          <div class="scope-card"><strong>CRM</strong><span>Contact fields, pipeline stages, lead status</span></div>
+          <div class="scope-card"><strong>Automation</strong><span>Triggers, actions, conditions, follow-up</span></div>
+          <div class="scope-card"><strong>Scheduling</strong><span>Calendar, confirmations, reminders</span></div>
+          <div class="scope-card"><strong>Lead Capture</strong><span>HVAC consultation funnel and forms</span></div>
+          <div class="scope-card"><strong>QA</strong><span>Testing, edge cases, duplicate prevention</span></div>
+          <div class="scope-card"><strong>Documentation</strong><span>Workflow logic and maintainability</span></div>
+        </div>
+
+        <div style="margin-top:14px;font-size:11px;color:var(--muted)" class="reveal">
+          Additional walkthrough:
+          <a style="color:var(--blue);font-weight:800" target="_blank" rel="noopener noreferrer"
+             href="https://drive.google.com/file/d/191z_03vBy6Mf4ZVx6YWHwsG5SjJleyXB/view?usp=sharing">
+             Service Scheduling Flow →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE GOHIGHLEVEL GALLERY -->
+    <section class="section section-alt" id="inside-ghl">
+      <div class="container">
+        <div class="section-tag reveal">Inside The System<span class="tag-line"></span></div>
+        <h2 class="reveal">A look inside GoHighLevel.</h2>
+        <p class="gallery-intro reveal" style="--d:80ms">
+          Screenshots of the actual build — custom fields, tags, and pipeline structure — showing how the
+          CRM is organized behind the scenes, not just what the customer sees.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-card reveal" style="--d:0ms">
+            <div class="gallery-shot">
+              <img src="assets/ghl-custom-fields.png" alt="Custom fields setup in GoHighLevel" onerror="this.parentElement.textContent='Add screenshot: assets/ghl-custom-fields.png'">
+              <button class="zoom-btn" aria-label="Zoom image" onclick="openLightbox(this)">⤢</button>
+            </div>
+            <div class="gallery-body">
+              <strong>Custom Fields</strong>
+              <span>Structured contact and job data — service type, equipment age, lead source, and more.</span>
+            </div>
+          </div>
+
+          <div class="gallery-card reveal" style="--d:80ms">
+            <div class="gallery-shot">
+              <img src="assets/ghl-tags.png" alt="Tagging system in GoHighLevel" onerror="this.parentElement.textContent='Add screenshot: assets/ghl-tags.png'">
+              <button class="zoom-btn" aria-label="Zoom image" onclick="openLightbox(this)">⤢</button>
+            </div>
+            <div class="gallery-body">
+              <strong>Tagging System</strong>
+              <span>Tags used to segment leads, trigger workflows, and keep the pipeline easy to filter and report on.</span>
+            </div>
+          </div>
+
+          <div class="gallery-card reveal" style="--d:160ms">
+            <div class="gallery-shot">
+              <img src="assets/ghl-pipeline.png" alt="Pipeline stages in GoHighLevel" onerror="this.parentElement.textContent='Add screenshot: assets/ghl-pipeline.png'">
+              <button class="zoom-btn" aria-label="Zoom image" onclick="openLightbox(this)">⤢</button>
+            </div>
+            <div class="gallery-body">
+              <strong>Pipeline Stages</strong>
+              <span>The 7-stage pipeline mapping a lead's journey from first contact to booked, completed job.</span>
+            </div>
+          </div>
+
+          <div class="gallery-card reveal" style="--d:240ms">
+            <div class="gallery-shot">
+              <img src="assets/ghl-workflow-builder.png" alt="Workflow automation builder in GoHighLevel" onerror="this.parentElement.textContent='Add screenshot: assets/ghl-workflow-builder.png'">
+              <button class="zoom-btn" aria-label="Zoom image" onclick="openLightbox(this)">⤢</button>
+            </div>
+            <div class="gallery-body">
+              <strong>Workflow Builder</strong>
+              <span>Triggers, conditions, and actions wired together behind one of the five automations above.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="section" id="how-i-work">
+      <div class="container">
+        <div class="section-tag reveal">How I Work<span class="tag-line"></span></div>
+        <div class="process-intro reveal">
+          <p>
+            From revenue leak to a tested, documented working system. I start with the business problem,
+            then design a practical system that can be tested, maintained, explained, and handed off.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card reveal" style="--d:0ms">
+            <span class="process-num">01</span>
+            <span class="process-label">DISCOVER</span>
+            <h3>Map the customer journey</h3>
+            <p>Identify where leads enter, where they drop off, and where manual follow-up creates gaps.</p>
+          </article>
+          <article class="process-card reveal" style="--d:100ms">
+            <span class="process-num">02</span>
+            <span class="process-label">DESIGN & BUILD</span>
+            <h3>Turn the solution into a system</h3>
+            <p>Structure the CRM, pipeline logic, triggers, conditions, and follow-up around the workflow.</p>
+          </article>
+          <article class="process-card reveal" style="--d:200ms">
+            <span class="process-num">03</span>
+            <span class="process-label">TEST & REFINE</span>
+            <h3>Test real-world scenarios</h3>
+            <p>Check timing, conditions, edge cases, duplicate actions, and handoffs before launch.</p>
+          </article>
+          <article class="process-card reveal" style="--d:300ms">
+            <span class="process-num">04</span>
+            <span class="process-label">DOCUMENT & HAND OFF</span>
+            <h3>Make it clear and maintainable</h3>
+            <p>Document the logic, workflows, and key settings so the system can be understood and managed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section section-dark" id="tools">
+      <div class="container">
+        <div class="section-tag reveal">Tools<span class="tag-line"></span></div>
+        <h2 class="reveal">The tools behind the system.</h2>
+        <p class="tools-intro reveal" style="--d:80ms">
+          A practical no-code and AI-assisted stack for CRM architecture, workflow automation,
+          customer journeys, documentation, and portfolio assets.
+        </p>
+
+        <div class="tool-grid">
+          <div class="tool-card reveal" style="--d:0ms">
+            <div class="tool-cat">CRM & Automation</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_GoHighLevel.png" alt="GoHighLevel" onerror="this.parentElement.textContent='GH'"></span>GoHighLevel</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_make.png" alt="Make.com" onerror="this.parentElement.textContent='M'"></span>Make.com</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_n8n.png" alt="n8n" onerror="this.parentElement.textContent='n8'"></span>n8n</div>
+          </div>
+          <div class="tool-card reveal" style="--d:80ms">
+            <div class="tool-cat">AI & Problem Solving</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_chatgpt.png" alt="ChatGPT" onerror="this.parentElement.textContent='AI'"></span>ChatGPT</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_claude.png" alt="Claude" onerror="this.parentElement.textContent='C'"></span>Claude</div>
+          </div>
+          <div class="tool-card reveal" style="--d:160ms">
+            <div class="tool-cat">Design & Creative</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_canva.png" alt="Canva" onerror="this.parentElement.textContent='Ca'"></span>Canva</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_photoshop.png" alt="Photoshop" onerror="this.parentElement.textContent='Ps'"></span>Photoshop</div>
+          </div>
+          <div class="tool-card reveal" style="--d:240ms">
+            <div class="tool-cat">Productivity</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_GoogleWorkspace.png" alt="Google Workspace" onerror="this.parentElement.textContent='G'"></span>Google Workspace</div>
+          </div>
+          <div class="tool-card reveal" style="--d:320ms">
+            <div class="tool-cat">Video</div>
+            <div class="tool"><span class="tool-icon"><img src="assets/icon_capcut.png" alt="CapCut" onerror="this.parentElement.textContent='▶'"></span>CapCut</div>
+          </div>
+        </div>
+
+        <p class="tool-note reveal">
+          Tools are selected based on the workflow — not the other way around. The focus is on simple,
+          reliable systems that solve a specific business problem without unnecessary automation.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="photo-wrap reveal">
+          <svg class="node-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path id="aboutNodePath" d="M11,1 L89,1 A9,9 0 0 1 99,11 L99,89 A9,9 0 0 1 89,99 L11,99 A9,9 0 0 1 1,89 L1,11 A9,9 0 0 1 11,1 Z" fill="none" stroke="none"/>
+            <circle r="2.3" class="node-dot" fill="#FF7A00">
+              <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#aboutNodePath"/>
+              </animateMotion>
+            </circle>
+          </svg>
+          <!-- Replace with your actual GitHub asset path -->
+          <img class="profile-photo" src="assets/profile.png" alt="Jayziel, Revenue Automation Specialist" />
+        </div>
+
+        <div class="about-copy reveal" style="--d:100ms">
+          <div class="section-tag">About<span class="tag-line"></span></div>
+          <h2>The person behind the <span class="accent">systems.</span></h2>
+          <p>
+            I'm <strong>Jayziel</strong>, based in the Philippines, with a background in graphic design
+            and a growing focus on CRM and revenue automation.
+          </p>
+          <p>
+            That design background gives me a strong eye for the customer-facing experience, while my current
+            work focuses on the systems behind it — CRM structure, workflow automation, lead management,
+            funnels, follow-up, testing, and documentation.
+          </p>
+          <p>
+            I'm building toward a <strong>Revenue Automation Specialist</strong> role, with HVAC as my primary
+            portfolio niche. My main project, Apex Comfort HVAC, is a self-directed demo system built from scratch
+            to show how I approach real business problems, design automation logic, test workflows, and document the finished system.
+          </p>
+
+          <div class="transparency">
+            These are self-directed portfolio demonstrations, not claimed client results. The goal is to show
+            how I think, build, troubleshoot, test, and improve systems.
+          </div>
+
+          <div class="hiring-card">
+            <strong>Open to Revenue Automation, CRM Automation, and GoHighLevel Specialist opportunities.</strong>
+            <div class="contact-links">
+              <a class="small-btn primary" href="#contact">Email me →</a>
+              <a class="small-btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">LinkedIn</a>
+              <!-- Replace with your actual WhatsApp click-to-chat URL -->
+              <a class="small-btn" href="https://wa.me/639275806973" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <div class="section-tag">Contact<span class="tag-line"></span></div>
+          <h2 class="contact-title">Start a <span class="accent">conversation.</span></h2>
+          <p class="contact-copy">
+            Describe your workflow, the problem you're hitting, or the system you want to build.
+            I'm happy to walk through the approach and the work shown in this portfolio.
+          </p>
+
+          <div class="contact-table">
+            <!-- Replace YOUR_EMAIL with your actual email -->
+            <div class="contact-row"><strong>Email</strong><a href="mailto:jayziellagumbay@gmail.com">jayziellagumbay@gmail.com</a></div>
+            <div class="contact-row"><strong>LinkedIn</strong><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">linkedin.com/in/jayziel-lagumbay</a></div>
+            <div class="contact-row"><strong>WhatsApp</strong><a target="_blank" rel="noopener noreferrer" href="https://wa.me/639275806973">Message on WhatsApp</a></div>
+            <div class="contact-row"><strong>Location</strong><span>Philippines · Remote</span></div>
+          </div>
+        </div>
+
+        <!-- GitHub Pages cannot process a normal HTML form by itself.
+             This form opens the visitor's email client. Replace YOUR_EMAIL. -->
+        <form class="contact-form reveal" id="contactForm" style="--d:100ms">
+          <div class="field">
+            <label for="name">NAME</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">EMAIL</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="message">MESSAGE</label>
+            <textarea id="message" name="message" placeholder="Tell me about your HVAC business and what you're trying to solve." required></textarea>
+          </div>
+          <button class="btn btn-orange" type="submit">Send message →</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Jayziel · Revenue Automation Specialist</span>
+      <div class="footer-links">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jayziel-lagumbay">LinkedIn</a>
+        <a href="https://wa.me/639275806973" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#contact">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="to-top" id="toTop" aria-label="Back to top">↑</a>
+
+  <div class="lightbox" id="imgLightbox">
+    <button class="lightbox-close" aria-label="Close" onclick="closeLightbox()">×</button>
+    <img id="lightboxImg" src="" alt="Zoomed screenshot">
+  </div>
+
+  <script>
+    // GitHub Pages is static, so this form opens the visitor's email client.
+    // Replace YOUR_EMAIL@example.com with your real email address.
+    const CONTACT_EMAIL = "jayziellagumbay@gmail.com";
+
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = encodeURIComponent("Portfolio inquiry from " + name);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        message
+      );
+
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    });
+
+    // Scroll-triggered reveal animations
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach((el) => io.observe(el));
+
+    // Animated counters in proof strip
+    const counters = document.querySelectorAll(".proof-number");
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10) || 0;
+        let current = 0;
+        const duration = 900;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          current = Math.round(progress * target);
+          el.textContent = current;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        countIO.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => countIO.observe(el));
+
+    // Screenshot zoom lightbox
+    const lightbox = document.getElementById("imgLightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    function openLightbox(btn) {
+      const img = btn.parentElement.querySelector("img");
+      if (!img) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add("show");
+    }
+    function closeLightbox() {
+      lightbox.classList.remove("show");
+      lightboxImg.src = "";
+    }
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById("siteNav");
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY > 12;
+      nav.classList.toggle("scrolled", scrolled);
+      toTop.classList.toggle("show", window.scrollY > 500);
+    });
+  </script>
+</body>
+</html>
